@@ -43,7 +43,7 @@ Avec les registres 64-bits, nous pouvons stocker des valeurs beaucoup plus impor
 
 L'ASLR est un système qui permet de randomiser les adresses mémoires dans un système informatique (par exemple pour éviter les attaques par `buffer overflow`.
 
-![test](https://raw.githubusercontent.com/0ldProgrammer/pic/main/remix-ondemand-live-randomization-finegrained-live-aslr-during-runtime-6-638.jpg)
+![test](https://raw.githubusercontent.com/0ldProgrammer/pic/main/Screenshot_2021-02-08_18-00-58.png)
 
 ### Où est stocker le fichier ASLR pour l'activer ou le désactiver ?
 
