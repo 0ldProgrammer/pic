@@ -35,6 +35,27 @@ Les registres d'offset sont utilisés lors de l'adressage indirect de la mémoir
 
 ### Registre 64-bits
 
-Avec les registres 64-bits, nous pouvons stocker des valeurs beaucoup plus importantes, les noms de registres changent également.
+Avec les registres 64-bits, nous pouvons stocker des valeurs beaucoup plus importantes, les noms de registres changent également, par exemple `EAX` devient `RAX`, mais leur fonction sont parfaitement les mêmes.
 
 ![test](https://clementbera.files.wordpress.com/2014/01/gpreg.png)
+
+## ASLR
+
+L'ASLR est un système qui permet de randomiser les adresses mémoires dans un système informatique (par exemple pour éviter les attaques par `buffer overflow`.
+
+### Où est stocker le fichier ASLR pour l'activer ou le désactiver ?
+
+Basiquement, le fichier `ASLR` est stocker dans le dossier `/proc/sys/kernel/` avec comme nom de fichier `randomize_va_space`. Si j'affiche ce fichier, il s'avère que il me renvoie comme valeur `2` ce qui veut dire que l'ASLR est activer et randomise bien les adresses dans le système.
+
+    root@wildcodeschool:/usr/bin# ldd /usr/bin/ovrflw 
+            linux-gate.so.1 (0xf7f04000)
+            libc.so.6 => /lib32/libc.so.6 (0xf7d1a000) <---
+            /lib/ld-linux.so.2 (0xf7f05000)               |
+    root@wildcodeschool:/usr/bin# ldd /usr/bin/ovrflw     |
+            linux-gate.so.1 (0xf7f5c000)                  |
+            libc.so.6 => /lib32/libc.so.6 (0xf7d72000) <---
+            /lib/ld-linux.so.2 (0xf7f5d000)               |
+    root@wildcodeschool:/usr/bin# ldd /usr/bin/ovrflw     |
+            linux-gate.so.1 (0xf7fc6000)                  |
+            libc.so.6 => /lib32/libc.so.6 (0xf7ddc000) <---
+            /lib/ld-linux.so.2 (0xf7fc7000)
