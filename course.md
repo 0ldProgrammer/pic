@@ -43,6 +43,8 @@ Avec les registres 64-bits, nous pouvons stocker des valeurs beaucoup plus impor
 
 L'ASLR est un système qui permet de randomiser les adresses mémoires dans un système informatique (par exemple pour éviter les attaques par `buffer overflow`.
 
+![test](https://raw.githubusercontent.com/0ldProgrammer/pic/main/remix-ondemand-live-randomization-finegrained-live-aslr-during-runtime-6-638.jpg)
+
 ### Où est stocker le fichier ASLR pour l'activer ou le désactiver ?
 
 Basiquement, le fichier `ASLR` est stocker dans le dossier `/proc/sys/kernel/` avec comme nom de fichier `randomize_va_space`. Si j'affiche ce fichier, il s'avère que il me renvoie comme valeur `2` ce qui veut dire que l'ASLR est activer et randomise bien les adresses dans le système.
@@ -77,5 +79,4 @@ Maintenant, essayons de changer la valeur du fichier `randomize_va_space` par la
             /lib/ld-linux.so.2 (0xf7f2d000) 
  
  Les adresses restent les mêmes, après avoir changé la valeur dans le fichier `randomize_va_space`. Mais aujourd'hui, il est possible de contourner cette protection en fesant des attaques par `brute-force` ou via des techniques par `ROP` par exemple.
- 
  
