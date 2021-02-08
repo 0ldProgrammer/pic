@@ -97,6 +97,6 @@ Donc, basiquement la technique de la retour à la libc s'applique lorsque la pil
 
 Lorsque l'attaquant aura trouver la taille du buffer, il cherchera les adresses des fonctions de `system()`, de `exit()` et également de l'adresse de `/bin/sh`.
 
-![test](https://imgur.com/Fa3DlCN.png)
+![gfd](https://imgur.com/Fa3DlCN.png)
 
 Par exemple, dans le schéma ci-dessus, si nous dépassons la taille du `buffer`, il y a 4 octets allouées dans le registre `EIP`, et nous mettrons l'adresse de la fonction `system()` pour que le processeur pointe vers l'adresse de `system()` et exécute notre fonction pour modifier le comportement du programme.
