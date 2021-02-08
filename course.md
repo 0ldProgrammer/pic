@@ -22,14 +22,15 @@ Utilisé comme compteur par certaines intructions, permettant de répéter une s
 - EDX : registre de données (data register). 
 Utilisé pour les opérations arithmétiques et les opérations d'entrée/sortie.
 
-Ce sont des registres 32 bits; pour des raisons historiques, les 16 bits de poids faible sont constitués respectivement des registres AX, DX, CX et BX. 
+Ce sont des registres 32 bits, pour des raisons historiques, les 16 bits de poids faible sont constitués respectivement des registres AX, DX, CX et BX. 
 Ces 4 registres 16 bits sont également décomposés en 8 registres de 8 bits pour stocker des valeurs beaucoup plus petite :
 
-- AL : octet de poids faible de AX
-- AH : octet de poids fort de AX
-- BL : octet de poids faible de BX
-- BH : octet de poids fort de BX
-- CL : octet de poids faible de CX
-- CH : octet de poids fort de CX
-- DL : octet de poids faible de DX
-- DH : octet de poids fort de DX
+- AL : octet de poids faible de AX.
+- AH : octet de poids fort de AX.
+- BL : octet de poids faible de BX.
+- BH : octet de poids fort de BX.
+- CL : octet de poids faible de CX.
+- CH : octet de poids fort de CX.
+- DL : octet de poids faible de DX.
+- DH : octet de poids fort de DX.
+
