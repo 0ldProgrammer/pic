@@ -59,3 +59,23 @@ Basiquement, le fichier `ASLR` est stocker dans le dossier `/proc/sys/kernel/` a
             linux-gate.so.1 (0xf7fc6000)                  |
             libc.so.6 => /lib32/libc.so.6 (0xf7ddc000) <---
             /lib/ld-linux.so.2 (0xf7fc7000)
+
+Maintenant, essayons de changer la valeur du fichier `randomize_va_space` par la valeur `0` et essayons d'exécuter à nouveau la commande `ldd` si les adresses sont toujours randomisées.
+
+    root@wildcodeschool:/usr/bin# echo 0 > /proc/sys/kernel/randomize_va_space
+    root@wildcodeschool:/usr/bin# ldd /usr/bin/ovrflw
+            linux-gate.so.1 (0xf7f2c000)
+            libc.so.6 => /lib32/libc.so.6 (0xf7d42000) <---
+            /lib/ld-linux.so.2 (0xf7f2d000)               |
+     root@wildcodeschool:/usr/bin# ldd /usr/bin/ovrflw    |
+            linux-gate.so.1 (0xf7f2c000)                  |
+            libc.so.6 => /lib32/libc.so.6 (0xf7d42000) <---
+            /lib/ld-linux.so.2 (0xf7f2d000)               |    
+    root@wildcodeschool:/usr/bin# ldd /usr/bin/ovrflw     |
+            linux-gate.so.1 (0xf7f2c000)                  |
+            libc.so.6 => /lib32/libc.so.6 (0xf7d42000) <---
+            /lib/ld-linux.so.2 (0xf7f2d000) 
+ 
+ Les adresses restent les mêmes, après avoir changé la valeur dans le fichier `randomize_va_space`. Mais aujourd'hui, il est possible de contourner cette protection en fesant des attaques par `brute-force` ou via des techniques par `ROP` par exemple.
+ 
+ 
