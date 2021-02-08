@@ -11,6 +11,8 @@
 - Exploitation
     - Attaque retour à la libc
     - Attaque par ROP
+      - Le programme et la compilation
+      - Exploitation du programme
 
 # Fonctionnement basique
 ## Registre
@@ -258,7 +260,7 @@ Il suffit maintenant d'utiliser les adresses que nous avons capturer contre le p
 
 ## Attaque par ROP
 
-# Le programme et la compilation
+### Le programme et la compilation
 
 Donc avant tout ça, nous allons activer l'`ASLR` (pour grosso modo randomisée la pile, le tas et également la libc) à l'aide d'une commande.
 
@@ -292,7 +294,7 @@ Et finalement l'option `-fno-stack-protector` permet de désactiver le Canari (n
 
 Parfait, notre programme est prêt à être exploiter.
 
-# Exploitation du programme
+### Exploitation du programme
 
 Les choses commence à être intéréssant, nous allons essayer de trouver le `padding` pour écraser le `Return Address Overwrite` ou bien `l'adresse de retour` (ou sauvegarde `EIP`).
 
