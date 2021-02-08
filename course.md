@@ -107,3 +107,23 @@ Par exemple, dans le schéma ci-dessus, si nous dépassons la taille du `buffer`
 ## Explication de l'exploitation de la technique ROP
 ### Faille ROP
 
+Avant de commencer l'exploitation, il faut bien comprendre à quoi sert ce système et de comprendre son fonctionnement.
+
+Le `ROP`, return-oriented programming, est une technique d'exploitation avancée de type dépassement de pile (stack overflow) permettant l'exécution de code par un attaquant et ce en s'affranchissant plus ou moins efficacement des mécanismes de protection tels que l'utilisation de zones mémoires non-exécutables (cf. bit NX pour Data Execution Prevention, DEP), l'utilisation d'un espace d'adressage aléatoire (Address Space Layout Randomization, `ASLR`).
+
+Notre but concrètement c'est de récupérer des instructions du binaire pour ensuite faire un rassemblement d'instruction (les bouts d'instruction on appel ça un `gadget` c'est le langage utilisé quand nous exploitons du ROP). Imagions que nous avons des instructions basique. (C'est un exemple bien evidamment)
+
+    push   ebp                # Instruction 1
+    mov    ebp,esp            # Instruction 2
+    push   ecx                # Instruction 3
+    sub    esp,0x4            # Instruction 4
+    call   0x804848b <secret> # Instruction 5 
+    mov    eax,0x0            # Instruction 6
+
+Imaginons que par la suite, nous décidons de prendre les instructions qui nous intéresse pour ensuite faire un rassemblement d'instruction, par exemple.
+
+    push   ebp                # Instruction 1
+    mov    ebp,esp            # Instruction 2
+    mov    eax,0x0            # Instruction 6
+
+Justement, notre but c'est de récupérer les instructions du binaire pour ensuite modifier le comportement du programme et d'exécuter quelques choses qui nous intéresse par exemple un `SHELL`.
