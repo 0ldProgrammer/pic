@@ -101,3 +101,4 @@ Lorsque l'attaquant aura trouver la taille du buffer, il cherchera les adresses 
 ![other_test](https://imgur.com/Fa3DlCN.png)
 
 Par exemple, dans le schéma ci-dessus, si nous dépassons la taille du `buffer`, il y a 4 octets allouées dans le registre `EIP`, et nous mettrons l'adresse de la fonction `system()` pour que le processeur pointe vers l'adresse de `system()` et exécute notre fonction pour modifier le comportement du programme.
+
