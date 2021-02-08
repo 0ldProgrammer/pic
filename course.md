@@ -1,3 +1,10 @@
+- Fonctionnement basique
+    - Registre
+      - Registre 32-bits
+      - Registre 64-bits
+    - ASLR
+      - Où est stocker le fichier ASLR pour l'activer ou le désactiver ?
+
 # Fonctionnement basique
 ## Registre
 ### Registre 32-bits
