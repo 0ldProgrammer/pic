@@ -1,5 +1,5 @@
 # Fonctionnement basique
-## Registre
+## Registre
 ### Registre 32 bits
 
 test
