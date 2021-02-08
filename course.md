@@ -4,6 +4,8 @@
       - Registre 64-bits
     - ASLR
       - Où est stocker le fichier ASLR pour l'activer ou le désactiver ?
+    - Explication de l'exploitation de retour à la libc
+      - Faille ret2libc
 
 # Fonctionnement basique
 ## Registre
@@ -87,3 +89,9 @@ Maintenant, essayons de changer la valeur du fichier `randomize_va_space` par la
  
  Les adresses restent les mêmes, après avoir changé la valeur dans le fichier `randomize_va_space`. Mais aujourd'hui, il est possible de contourner cette protection en fesant des attaques par `brute-force` ou via des techniques par `ROP` par exemple.
  
+## Explication de l'exploitation de retour à la libc
+
+Le buffer overflow est une vulnérabilité présente lorsque le programmeur ne vérifie pas la taille d’une variable fournie par l’utilisateur, et qu’il stocke cette variable en mémoire. Il est alors possible pour l’attaquant d’entrer une valeur de taille supérieure à ce qui était prévu, et lorsque cette valeur (appelée buffer) est copiée en mémoire, elle dépasse de l’espace qui lui était alloué (dépassement de tampon).
+
+Donc, basiquement la technique de la retour à la libc s'applique lorsque la pile n'est pas exécutable, le but est d'utiliser les fonctions de la `libc` comme `system()`, `exit()` pour essayer de faire exécuter une commande au programme alors que le programme n'était pas prévu pour cela.
+
