@@ -35,3 +35,6 @@ Les registres d'offset sont utilisés lors de l'adressage indirect de la mémoir
 
 ### Registre 64-bits
 
+Avec les registres 64-bits, nous pouvons stocker des valeurs beaucoup plus importantes, les noms de registres changent également.
+
+![test](https://clementbera.files.wordpress.com/2014/01/gpreg.png)
