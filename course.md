@@ -23,14 +23,15 @@ Utilisé comme compteur par certaines intructions, permettant de répéter une s
 Utilisé pour les opérations arithmétiques et les opérations d'entrée/sortie.
 
 Ce sont des registres 32 bits, pour des raisons historiques, les 16 bits de poids faible sont constitués respectivement des registres AX, DX, CX et BX. 
-Ces 4 registres 16 bits sont également décomposés en 8 registres de 8 bits pour stocker des valeurs beaucoup plus petite :
+Ces 4 registres 16 bits sont également décomposés en 8 registres de 8 bits pour stocker des valeurs beaucoup plus petite.
 
-- AL : octet de poids faible de AX.
-- AH : octet de poids fort de AX.
-- BL : octet de poids faible de BX.
-- BH : octet de poids fort de BX.
-- CL : octet de poids faible de CX.
-- CH : octet de poids fort de CX.
-- DL : octet de poids faible de DX.
-- DH : octet de poids fort de DX.
+Les registres d'offset sont utilisés lors de l'adressage indirect de la mémoire (pointeurs). Ces registres complémentaires sont :
+
+- EBP : (Extended Base Pointer) pointeur de base, utilisé dans le calcul d'adresse mémoire.
+- ESP : (Extended Stack Pointer) pointeur de pile.
+- ESI : (Extended Source Index) pointeur source.
+- EDI : (Extended Destination Index) pointeur destination.
+- EPI : (Extended Instruction Pointer) Le registre EIP est utilisé avec le segment du registre CS par le processeur pour connaitre la prochaine instruction à exécuter.
+
+### Registre 64-bits
 
